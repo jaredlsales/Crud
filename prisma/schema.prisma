@@ -9,6 +9,41 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+// model = modelo da talela Hierarquia (@id = chave primaria) (uuid e usado mais por conta da segurançça, deficuldar os hacker se não poderia usar autoincriment).
+// data_criação vai pegar o horario e a data e vai armazenar no campo. DateTime e o tipo de dado que vai pegar.
+// @default(uuid()) no Prisma define que o campo terá um valor padrão gerado automaticamente — nesse caso, um UUID
+// @@map("hierarquia") Criar e mapeamento o nome da tabela 
+// uuid (383a38b4-ced0-44aa-9b9d-bcef0000e01) infez de ser 0,1,2,3,4.... (mais seguro do que autoincriment)
+// funcionarios Funcionarios[] [] com isso mostra que pode receber muitos funcionarios 
+model Hierarquia {
+  id String @id @default(uuid()) 
+  nome String
+
+  data_criacao   DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  funcionarios Funcionarios[]
+
+  @@map("hierarquia")
+}
+
+// funcionarios e um apelido para o moedelo Hierarquia
+model Funcionarios {
+  id String @id @default(uuid())
+  nome String
+  email String
+  senha String
+  status Boolean 
+  
+  data_criacao DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  hierarquia Hierarquia @relation(fields: [idHierarquia], references: [id])
+  idHierarquia String
+
+  @@map("funcionarios")
 }
