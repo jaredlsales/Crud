@@ -15,8 +15,12 @@ Importação "não full" (nomeada): usada quando o módulo exporta vários valor
 const router = Router()
 
 //Criação da Rotas de EndPoint "/CadastrarHierarquia" (seria o endpoint)
+//Metodos POST
 router.post("/CadastrarHierarquia", new HierarquiaControllers().cadastroHierarquia )
 router.post("/CadastrarFuncionarios", new FuncionariosControllers().cadastrarFuncionarios)
+
+//Metodos GET
+router.get("/VisualizarFuncionarios", new FuncionariosControllers().visualizarFuncionarios)
 
 //O método .post() define uma rota que responde a requisições HTTP do tipo POST. Ou seja, quando o cliente envia dados (como em um formulário ou JSON), essa rota é chamada.
 /*Comparação com outras rotas:

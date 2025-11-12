@@ -16,8 +16,16 @@ class FuncionariosControllers {
         })
 
         return res.json(resposta)
-    } 
+    }
+    
+    // fazendo a colsulta no bando de dados
+    // Controllers sempre retorn em formado JSON
+    async visualizarFuncionarios(req:Request, res:Response){
+        const enviarDados = new FuncionariosServices()
+        const resposta =  await enviarDados.visualizarFuncionarios()
+        return res.json(resposta)
 
+    } 
 
 }
 
