@@ -35,6 +35,7 @@ model Hierarquia {
 model Funcionarios {
   id String @id @default(uuid())
   nome String
+  cpf String @unique
   email String
   senha String
   status Boolean 

@@ -5,11 +5,12 @@ import { FuncionariosServices } from "../../Services/Funcionarios/FuncionariosSe
 // Ela está vindo do front-end essa informação, ela chega com o arquivo JSON mais colocando {} ela se descontrui 
 class FuncionariosControllers {
     async cadastrarFuncionarios(req: Request, res:Response){
-        const {nome, email, senha, status, idHierarquia} = req.body
+        const {nome, email, cpf, senha, status, idHierarquia} = req.body
         const enviarDados = new FuncionariosServices()
         const resposta = await enviarDados.cadastrarFuncionarios({
             nome,
             email,
+            cpf,
             senha,
             status,
             idHierarquia    
