@@ -72,6 +72,18 @@ class FuncionariosServices {
        return resposta
     }
 
+    //Apagar
+    //(id: string) utlizar assim quando tem pouca coisa para apagar (Isso seria a tipificação - Interface)
+    async apagarFuncionarios(id: string){
+        await prismaClient.funcionarios.delete({
+            where: {
+                id:id
+            }
+        })
+
+        return ({dados:"Registro Excluido Com Sucesso"})
+    }
+
 }
 
 export { FuncionariosServices }

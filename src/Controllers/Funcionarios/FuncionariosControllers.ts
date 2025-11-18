@@ -26,7 +26,18 @@ class FuncionariosControllers {
         const resposta =  await enviarDados.visualizarFuncionarios()
         return res.json(resposta)
 
-    } 
+    }
+    
+    // apagar bando de dados
+    // descontuir o JSON e recer como params (parametro)
+    // params pq nao está no body está no parametros
+    async apagarFuncionarios(req:Request, res:Response){
+        const {id} = req.params
+        const enviarDados = new FuncionariosServices()
+        const resposta = await enviarDados.apagarFuncionarios(id)
+        return res.json(resposta)
+
+    }
 
 }
 

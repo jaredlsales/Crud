@@ -22,6 +22,9 @@ router.post("/CadastrarFuncionarios", new FuncionariosControllers().cadastrarFun
 //Metodos GET
 router.get("/VisualizarFuncionarios", new FuncionariosControllers().visualizarFuncionarios)
 
+//Metodo DELETE
+router.delete("/ApagarFuncionarios/:id", new FuncionariosControllers().apagarFuncionarios)
+
 //O método .post() define uma rota que responde a requisições HTTP do tipo POST. Ou seja, quando o cliente envia dados (como em um formulário ou JSON), essa rota é chamada.
 /*Comparação com outras rotas:
 router.get() → usado para buscar dados.
