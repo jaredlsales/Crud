@@ -75,6 +75,17 @@ class FuncionariosServices {
     //Apagar
     //(id: string) utlizar assim quando tem pouca coisa para apagar (Isso seria a tipificação - Interface)
     async apagarFuncionarios(id: string){
+        const idNaoExiste = await prismaClient.funcionarios.findFirst({
+            where:{
+                id:id
+            }
+        })
+
+        //! Negação (VAZIA SE FOR VERDADEIRA ELE VAI SEGUIR E APAGAR DEPOIS)
+        if(!idNaoExiste){
+            throw new Error("Registro não encontrado")
+        }
+
         await prismaClient.funcionarios.delete({
             where: {
                 id:id
