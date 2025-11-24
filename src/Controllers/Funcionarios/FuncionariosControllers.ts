@@ -19,7 +19,7 @@ class FuncionariosControllers {
         return res.json(resposta)
     }
     
-    // fazendo a colsulta no bando de dados
+    // fazendo a colsulta no banco de dados
     // Controllers sempre retorn em formado JSON
     async visualizarFuncionarios(req:Request, res:Response){
         const enviarDados = new FuncionariosServices()
@@ -28,8 +28,8 @@ class FuncionariosControllers {
 
     }
     
-    // apagar bando de dados
-    // descontuir o JSON e recer como params (parametro)
+    // apagar banco de dados
+    // descontuir o JSON e recerber como params (parametro)
     // params pq nao está no body está no parametros
     async apagarFuncionarios(req:Request, res:Response){
         const {id} = req.params
@@ -37,6 +37,22 @@ class FuncionariosControllers {
         const resposta = await enviarDados.apagarFuncionarios(id)
         return res.json(resposta)
 
+    }
+
+    //Altualizar banco de dados
+    async alterarFuncionarios(req:Request, res:Response){
+        const {id, nome, cpf, email, status} = req.body
+        const enviarDados = new FuncionariosServices()
+        const resposta = await enviarDados.altualizarFuncionarios({
+            id,
+            nome,
+            cpf,
+            email,
+            status
+        })
+
+        return res.json(resposta)
+        
     }
 
 }

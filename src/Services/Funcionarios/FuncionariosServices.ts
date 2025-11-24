@@ -1,6 +1,6 @@
 import prismaClient from "../../Prisma/PrismaClient"
 
-//tipificação (interface)
+//tipificação typeScript (interface)
 
 interface CadastrarFuncionarios {
 
@@ -10,6 +10,15 @@ interface CadastrarFuncionarios {
     senha: string,
     status: boolean,
     idHierarquia: string
+
+}
+
+interface AtualizarFuncionarios {
+    id: string,
+    nome: string,
+    cpf: string,
+    email: string,
+    status: boolean,
 
 }
 
@@ -93,6 +102,26 @@ class FuncionariosServices {
         })
 
         return ({dados:"Registro Excluido Com Sucesso"})
+    }
+
+    //id:id (ele vai estar verificando se tem esse dado no banco de dados), ele só vai fazer a alteração se estiver correto esse identificação.(Se tem esse valor no bando)
+    //se quiser pode colocar um const antes no async 
+    async altualizarFuncionarios({id,nome,cpf,email,status}: AtualizarFuncionarios){
+        await prismaClient.funcionarios.update({
+            where:{
+                id:id
+            },
+            data:{
+                nome:nome,
+                cpf:cpf,
+                email:email,
+                status:status
+            }
+            
+        })
+
+        return ({dados:"Alteração feita com sucesso"})
+
     }
 
 }
