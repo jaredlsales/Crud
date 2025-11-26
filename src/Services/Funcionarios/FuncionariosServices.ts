@@ -51,7 +51,7 @@ class FuncionariosServices {
            throw new Error("Cpf/Email já está cadastrado")
         }
 
-         const senhaCrypt = await hash(senha, 8)
+         const senhaCrypt = await hash(senha, 10)
          // 8 é um numero padrão, pela quantiade de vezes que ele vai criptgrofa
          await prismaClient.funcionarios.create({
             //nome primeiro e da aprimera culuna do bando de dados e o outro nome e os valores (inputado)

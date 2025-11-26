@@ -3,6 +3,7 @@ import { Router } from "express"
 //Importação do Controladores (Controllers) // {HierarquiaControllers } não é uma importação full e por isso tem essa chaves
 import { HierarquiaControllers } from "./Controllers/Hierarquia/HierarquiaControllers"
 import { FuncionariosControllers } from "./Controllers/Funcionarios/FuncionariosControllers"
+import {LoginFuncionariosControllers} from "./Controllers/LoginFuncionarios/LoginFuncionariosControllers"
 
 /*
 
@@ -18,6 +19,8 @@ const router = Router()
 //Metodos POST
 router.post("/CadastrarHierarquia", new HierarquiaControllers().cadastroHierarquia )
 router.post("/CadastrarFuncionarios", new FuncionariosControllers().cadastrarFuncionarios)
+//Meto POST (LoginFuncionarios)
+router.post("/LoginFuncioarios", new LoginFuncionariosControllers().loginFuncionarios)
 
 //Metodos GET
 router.get("/VisualizarFuncionarios", new FuncionariosControllers().visualizarFuncionarios)
@@ -27,6 +30,7 @@ router.delete("/ApagarFuncionarios/:id", new FuncionariosControllers().apagarFun
 
 //Metodo PUT (Uptade)
 router.put("/AlterarFuncionarios", new FuncionariosControllers().alterarFuncionarios)
+
 
 //O método .post() define uma rota que responde a requisições HTTP do tipo POST. Ou seja, quando o cliente envia dados (como em um formulário ou JSON), essa rota é chamada.
 /*Comparação com outras rotas:
