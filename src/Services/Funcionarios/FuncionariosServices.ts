@@ -78,7 +78,12 @@ class FuncionariosServices {
                 nome: true,
                 cpf: true,
                 email: true,
-                status: true
+                status: true,
+                hierarquia: {
+                    select: {
+                        nome: true
+                    }
+                }
             }
         })
        return resposta
