@@ -1,5 +1,6 @@
 import prismaClient from "../../Prisma/PrismaClient";
 import {compare} from "bcryptjs"
+import {sign} from "jsonwebtoken"
 
 interface LoginFuncionarios {
     email: string,
