@@ -2,6 +2,7 @@ import express, {Request, Response, NextFunction} from "express"
 import "express-async-errors"
 import cors from "cors"
 import router from "./routes"
+import path from "path"
 
 const app = express() //() significa que estou chamando toda função
 app.use(express.json()) //json e uma função que quer chamar.
@@ -11,6 +12,12 @@ app.use(router) //Assim ele está apetado para os caimhos das rodas o servidor
 // Melhorando a saida do Erro (deixando ele mais humanizado)
 // Erro de requisição 400 do metodo HTTP (Bad Request)
 // Erro 500 metodo HTTP (erro interno no servidor)
+
+//"/files" endopint estatico
+app.use(
+    "/files",
+    express.static(path.resolve(__dirname, "..", "tmp"))
+)
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error){

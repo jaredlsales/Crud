@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { HierarquiaServices } from "../../Services/Hierarquia/HierarquiaServices"
 
-class HierarquiaControllers { // async = nao vai ter uma nonexão persistendia (assíncrona)
+class HierarquiaControllers { // async = nao vai ter uma conexão persistendia (assíncrona)
     async cadastroHierarquia(req: Request, res: Response){
         const {nome} = req.body // body = corpo da requisição HTTP que foi enviada para o servidor
         const enviarDados = new HierarquiaServices()
