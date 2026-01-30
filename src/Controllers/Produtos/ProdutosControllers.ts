@@ -21,6 +21,12 @@ class ProdutosControllers {
 
     }
 
+    async visualizarProdutos(req:Request, res:Response){
+        const enviarDados = new ProdutosServices()
+        const resposta = await enviarDados.visualizarProdutos()
+        return res.json(resposta)
+    }
+
 }
 
 export {ProdutosControllers}

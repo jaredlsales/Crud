@@ -32,6 +32,7 @@ router.post("/CadastrarProdutos", upload.single("file"), new ProdutosControllers
 
 //Metodos GET
 router.get("/VisualizarFuncionarios", new FuncionariosControllers().visualizarFuncionarios)
+router.get("/VisualizarProdutos", new ProdutosControllers().visualizarProdutos)
 
 //Metodo DELETE
 router.delete("/ApagarFuncionarios/:id", new FuncionariosControllers().apagarFuncionarios)
