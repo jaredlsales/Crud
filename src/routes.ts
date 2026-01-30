@@ -27,8 +27,8 @@ router.post("/CadastrarHierarquia", new HierarquiaControllers().cadastroHierarqu
 router.post("/CadastrarFuncionarios", new FuncionariosControllers().cadastrarFuncionarios)
 //Metodo POST (LoginFuncionarios)
 router.post("/LoginFuncioarios", new LoginFuncionariosControllers().loginFuncionarios)
-//Metodo POST (CadastrarProduto)
-router.post("/CadastrarProdutos", new ProdutosControllers().cadastrarProdutos)
+//Metodo POST (CadastrarProduto) - "file e do server"
+router.post("/CadastrarProdutos", upload.single("file"), new ProdutosControllers().cadastrarProdutos)
 
 //Metodos GET
 router.get("/VisualizarFuncionarios", new FuncionariosControllers().visualizarFuncionarios)
