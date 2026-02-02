@@ -132,6 +132,22 @@ class FuncionariosServices {
 
     }
 
+    async consultaFuncionarios(id: string){
+        const resposta = await prismaClient.funcionarios.findFirst({
+            where:{
+                id:id
+            },
+            select:{
+                id:true,
+                nome:true,
+                email:true,
+                cpf:true
+            }
+        })
+
+        return resposta
+    }
+
 }
 
 export { FuncionariosServices }

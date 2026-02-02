@@ -55,6 +55,13 @@ class FuncionariosControllers {
         
     }
 
+    async consultaFuncionarios(req:Request, res:Response){
+        const {id} = req.body
+        const enviarDados =  new FuncionariosServices()
+        const resposta =  await enviarDados.consultaFuncionarios(id)
+        return res.json(resposta)
+    }
+
 }
 
 export {FuncionariosControllers}
