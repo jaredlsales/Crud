@@ -22,12 +22,35 @@ class LoginFuncionariosServices {
         //emailExiste tem um JSON = por conta da consulta tem a senha dentro do emailExiste, vc pode usar o console.log para ver 
         const senhaCrypt = await compare(senha,emailExiste.senha)
         //console.log(senhaCrypt)
-        if(senhaCrypt){
-            return ({dados:"Login Efetuado com Sucesso"})
-        } else {
+        if(!senhaCrypt){
             throw new Error ("Login ou Senha Incorreto")
         }
+
+        const token = sign({
+            //Informações do Usuario = WHERE NO EMAILEXISTE ELE PEGA TODOS OS DADOS QUANDO O EMAIL EXSISTE E PUXA TODOS OS DADOS.
+            id: emailExiste.id,
+            nome: emailExiste.nome,
+            email: emailExiste.email
+            
+        },
+        //pegando variavel de ambiente 
+            process.env.JWT_SECRETO,
+            {   
+                //comprando o id do front com o backend
+                subject: emailExiste.id,
+                expiresIn: "8h"
+            }
+        )
+        return {
+            //token e obrigadorio a mandar o restante e opcional 
+            id: emailExiste.id,
+            nome: emailExiste.nome,
+            email: emailExiste.email,
+            token: token
+        }
+
     }
+
 }
 
 export {LoginFuncionariosServices}
