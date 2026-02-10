@@ -31,7 +31,7 @@ function estaAutenticado(req:Request, res: Response, next: NextFunction) {
             process.env.JWT_SECRETO
         ) as Payload
         req.usuarioId = sub
-        //vai passar para o Controllear depois de autenticado 
+        //vai passar para o Controllear depois de autenticado (vc tem permisão para passar no controlador)
         return next()
     } catch (err) {
         //Seria Token invalido ou experido 
