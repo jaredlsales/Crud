@@ -8,6 +8,7 @@ import { HierarquiaControllers } from "./Controllers/Hierarquia/HierarquiaContro
 import { FuncionariosControllers } from "./Controllers/Funcionarios/FuncionariosControllers"
 import {LoginFuncionariosControllers} from "./Controllers/LoginFuncionarios/LoginFuncionariosControllers"
 import {ProdutosControllers} from "./Controllers/Produtos/ProdutosControllers"
+import {estaAutenticado} from "./Middleware/EstaAutenticado"
 
 /*
 
@@ -17,9 +18,10 @@ Importação "não full" (nomeada): usada quando o módulo exporta vários valor
 
 */
 
-const router = Router()
 
+const router = Router()
 const upload = multer(uploadConfig.upload("./tmp"))
+
 
 //Criação da Rotas de EndPoint "/CadastrarHierarquia" (seria o endpoint)
 //Metodos POST
@@ -33,7 +35,7 @@ router.post("/CadastrarProdutos", upload.single("file"), new ProdutosControllers
 router.post("/ConsultaFuncionarios", new FuncionariosControllers().consultaFuncionarios)
 
 //Metodos GET
-router.get("/VisualizarFuncionarios", new FuncionariosControllers().visualizarFuncionarios)
+router.get("/VisualizarFuncionarios", estaAutenticado, new FuncionariosControllers().visualizarFuncionarios)
 router.get("/VisualizarProdutos", new ProdutosControllers().visualizarProdutos)
 
 //Metodo DELETE
