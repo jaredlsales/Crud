@@ -5,6 +5,7 @@ import {LoginFuncionariosServices} from "../../Services/LoginFuncionarios/LoginF
 class LoginFuncionariosControllers{
     async loginFuncionarios(req:Request, res:Response){
         const {email, senha} = req.body
+        console.log(email,senha)
         const enviarDados = new LoginFuncionariosServices()
         const resposta = await enviarDados.loginFuncionariosServices({
             email,
