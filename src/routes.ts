@@ -38,6 +38,9 @@ router.post("/ConsultaFuncionarios", new FuncionariosControllers().consultaFunci
 router.get("/VisualizarFuncionarios", estaAutenticado, new FuncionariosControllers().visualizarFuncionarios)
 router.get("/VisualizarProdutos", new ProdutosControllers().visualizarProdutos)
 
+// Não vai enviar corpo ou paramentros vai ser enviado por Header por isso vai ser GET e não POST
+router.get("/VerificaToken", estaAutenticado, new LoginFuncionariosControllers().verificaToken)
+
 //Metodo DELETE
 router.delete("/ApagarFuncionarios/:id", new FuncionariosControllers().apagarFuncionarios)
 

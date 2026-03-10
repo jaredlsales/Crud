@@ -7,6 +7,8 @@ interface LoginFuncionarios {
     senha: string
 }
 
+
+
 class LoginFuncionariosServices {
     async loginFuncionariosServices ({email,senha}: LoginFuncionarios){
         const emailExiste = await prismaClient.funcionarios.findFirst({
@@ -47,9 +49,24 @@ class LoginFuncionariosServices {
             nome: emailExiste.nome,
             email: emailExiste.email,
             token: token
-        }
+        }       
 
     }
+
+    async verificaToken(id: string){
+            const resposta =  await prismaClient.funcionarios.findFirst({
+                where: {
+                    id:id
+                },
+                select: {
+                    id: true,
+                    nome: true
+                }
+            })
+
+            return resposta
+        }
+        
 
 }
 

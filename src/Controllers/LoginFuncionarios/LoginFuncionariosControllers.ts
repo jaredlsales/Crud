@@ -14,6 +14,15 @@ class LoginFuncionariosControllers{
 
         return res.json(resposta)
     }
+
+    async verificaToken(req:Request, res:Response){
+        //console.log(req.usuarioId)
+        //id nome do services
+        const id = req.usuarioId
+        const enviarDados =  new LoginFuncionariosServices()
+        const resposta = await enviarDados.verificaToken(id)
+        return res.json(resposta)
+    }
 }
 
 export {LoginFuncionariosControllers}
