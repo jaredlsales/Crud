@@ -14,6 +14,7 @@ function estaAutenticado(req:Request, res: Response, next: NextFunction) {
     //Recebendo o Token 
     //headers (Cabeçalho)
     const autToken = req.headers.authorization
+    console.log(autToken)
     //verifando se o token existe
     if (!autToken) {
         return res.json({dados:"Token Inexistante"})
@@ -23,6 +24,7 @@ function estaAutenticado(req:Request, res: Response, next: NextFunction) {
     //split (quebrar ou separação) " " -- (Bearer eyJhbGciOiJ) ele vai pegar o espaço (" " espaço) está diivindo em cada lado e assim pegando somente o token
     // vai pegar a onde está o espaço e separar (isso poderia ser usando em outros formas como : ou letra ou algo assim)
     const [, token] = autToken.split(" ")
+    //console.log(token)
     //Vai fazer uma verificação se o token está valido para fazer a extração do sub = id 
     try {
         //extrair a informação sub (decodificar)
