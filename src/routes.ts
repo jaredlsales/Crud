@@ -30,13 +30,13 @@ router.post("/CadastrarFuncionarios", new FuncionariosControllers().cadastrarFun
 //Metodo POST (LoginFuncionarios)
 router.post("/LoginFuncioarios", new LoginFuncionariosControllers().loginFuncionarios)
 //Metodo POST (CadastrarProduto) - "file e do server"
-router.post("/CadastrarProdutos", upload.single("file"), new ProdutosControllers().cadastrarProdutos)
+router.post("/CadastrarProdutos",estaAutenticado, upload.single("file"), new ProdutosControllers().cadastrarProdutos)
 //Metodo POST (ConsultaFuncionario)
 router.post("/ConsultaFuncionarios", new FuncionariosControllers().consultaFuncionarios)
 
 //Metodos GET
 router.get("/VisualizarFuncionarios", estaAutenticado, new FuncionariosControllers().visualizarFuncionarios)
-router.get("/VisualizarProdutos", new ProdutosControllers().visualizarProdutos)
+router.get("/VisualizarProdutos", estaAutenticado, new ProdutosControllers().visualizarProdutos)
 
 // Não vai enviar corpo ou paramentros vai ser enviado por Header por isso vai ser GET e não POST
 router.get("/VerificaToken", estaAutenticado, new LoginFuncionariosControllers().verificaToken)
